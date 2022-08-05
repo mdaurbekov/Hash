@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
-    static HashMap<Character, Integer> hashMap = new HashMap<>();
+    static Map<Character, Integer> hashMap = new HashMap<>();
 
     public static void main(String[] args) {
         String str = "Lorem ipsum dolor sit amet, consectetur adipiscing elit," +
@@ -15,13 +15,9 @@ public class Main {
 
 
         for (Character symbol : str.toCharArray()) {
-            if (hashMap.containsKey(symbol)) {
-                int value = hashMap.get(symbol);
-                hashMap.put(symbol, ++value);
-            } else {
-                hashMap.put(symbol, 1);
-            }
+            hashMap.put(symbol, hashMap.getOrDefault(symbol, 0) +1 );
         }
+
         char maxSymbol = ')';
         int maxValue = -1;
         char minSymbol = '(';
